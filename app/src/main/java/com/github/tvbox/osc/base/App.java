@@ -28,6 +28,7 @@ import me.jessyan.autosize.unit.Subunits;
  * @date :2020/12/17
  * @description:
  */
+import com.undcover.freedom.pyramid.PythonLoader;
 public class App extends MultiDexApplication {
     private static App instance;
 
@@ -56,6 +57,7 @@ public class App extends MultiDexApplication {
                 .setSupportSP(false)
                 .setSupportSubunits(Subunits.MM);
         PlayerHelper.init();
+        PythonLoader.getInstance().setApplication(this);
         JSEngine.getInstance().create();
         FileUtils.cleanPlayerCache();
     }
