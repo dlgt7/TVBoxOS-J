@@ -1,38 +1,12 @@
-<<<<<<<<<<<<<<json接口示例>>>>>>>>>>>>>
-# TVBox
+# TVBoxOSC
 
-=== Source Code - Editing the app default settings ===
+![Build](https://shields.io/github/actions/workflow/status/dlgt7/TVBoxOSC/test.yml?branch=master&logo=github&label=Build)
+[![Channel](https://img.shields.io/badge/Follow-Telegram-blue.svg?logo=telegram)](https://t.me/TVBoxOSC)
+[![Download](https://img.shields.io/github/v/release/dlgt7/TVBoxOSC?color=orange&logoColor=orange&label=Download&logo=DocuSign)](https://github.com/dlgt7/TVBoxOSC/releases/latest) 
+[![Total](https://shields.io/github/downloads/dlgt7/TVBoxOSC/total?logo=Bookmeter&label=Counts&logoColor=yellow&color=yellow)](https://github.com/dlgt7/TVBoxOSC/releases)
 
-    //searchable:搜索开关	        0:关闭 1:启用
-    //filterable:首页可选	        0:否 1:是
-    //playerType:播放器类型	        0:系统 1:IJK 2:EXO
-    //采集接口类型		        0:xml 1:json 3:jar 4:remote
-    //parses解析类型		        0:嗅探,自带播放器 1:解析,返回直链
-    //直播参数说明                   ua:用户自定义ua epg:节目网址 logo:台标网址
-    
-    {
-	"spider": "./your.jar",
-	"wallpaper": "./api/img",
-	"sites": [],
-	"parses": [],
-	"hosts": [
-		"cache.ott.ystenlive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com",
-		"cache.ott.bestlive.itv.cmvideo.cn=ip"
-	],
-	"lives": [],
-	"rules": [],
-	"doh": [
-		{
-			"name": "騰訊",
-			"url": "https://doh.pub/dns-query"
-		},
-		{
-			"name": "阿里",
-			"url": "https://dns.alidns.com/dns-query"
-		},
-		{
-			"name": "360",
-			"url": "https://doh.360.cn/dns-query"
-		}
-	]
-    }
+## Credits
+This repo relies on the following third-party projects:
+- [CatVodTVOfficial/TVBoxOSC](https://github.com/CatVodTVOfficial/TVBoxOSC)
+- [q215613905/TVBoxOS](https://github.com/q215613905/TVBoxOS) (Updated: 3f6d787c0080160cdd4ec241e0700493421b5c68)
+- [takagen99/Box](https://github.com/takagen99/Box) (Updated: bdce185cdc3aadf2d33d06abb14f5599df2b533b)
