@@ -780,6 +780,26 @@ public class PlayActivity extends BaseActivity {
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event != null ) {
+            if (mController.onKeyDown(keyCode,event)) {
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (event != null ) {
+            if (mController.onKeyUp(keyCode,event)) {
+                return true;
+            }
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         if (mVideoView != null) {
@@ -1536,18 +1556,24 @@ public class PlayActivity extends BaseActivity {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view,url);
-            String click=sourceBean.getClickSelector();
+            String click=sourceBean.getClickSelector().trim();
             LOG.i("echo-onPageFinished url:" + url);
             if(!click.isEmpty()){
                 String selector;
-                if(click.contains(";")){
+                if(click.contains(";") && !click.endsWith(";")){
                     if(!url.contains(click.split(";")[0]))return;
                     selector=click.split(";")[1];
                 }else {
-                    selector=click.trim();
+                    selector=click;
                 }
-                String js="$(\""+ selector+"\").click();";
-                mSysWebView.loadUrl("javascript:"+js);
+                String js = selector;
+                if(!selector.contains("click()"))js+=".click();";
+                LOG.i("echo-javascript:" + js);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    view.evaluateJavascript(js, null);
+                } else {
+                    view.loadUrl("javascript:" + js);
+                }
             }
         }
 
